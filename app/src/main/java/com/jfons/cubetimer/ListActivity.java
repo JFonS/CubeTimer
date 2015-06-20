@@ -1,37 +1,17 @@
 package com.jfons.cubetimer;
 
-import android.content.ContentValues;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jfons.cubetimer.data.TimesContract;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Random;
-
-
-public class MainActivity extends ActionBarActivity {
+public class ListActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Random r = new Random();
-
-        for (int i = 0; i < 20; ++i) {
-            ContentValues cv = new ContentValues();
-            cv.put(TimesContract.TimeEntry.COLUMN_TIME, r.nextFloat());
-            cv.put(TimesContract.TimeEntry.COLUMN_DATE, new Timestamp(new Date().getTime()).toString());
-            cv.put(TimesContract.TimeEntry.COLUMN_CUBE, "3x3");
-            Log.d("JFonS", cv.get(TimesContract.TimeEntry.COLUMN_TIME) + ", " + cv.get(TimesContract.TimeEntry.COLUMN_DATE));
-                    getContentResolver().insert(TimesContract.TimeEntry.CONTENT_URI, cv);
-        }
-
-
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list);
     }
 
 

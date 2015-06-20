@@ -1,16 +1,20 @@
 package com.jfons.cubetimer;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jfons.cubetimer.data.TimesContract;
+
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TimesListAdapter extends BaseAdapter
 {
@@ -39,26 +43,19 @@ public class TimesListAdapter extends BaseAdapter
         if (v == null)
         {
             LayoutInflater li;
-            li = LayoutInflater.from(MainActivityFragment.fragment.getActivity());
+            li = LayoutInflater.from(ListFragment.fragment.getActivity());
             v = li.inflate(R.layout.list_item_times, null);
         }
 
         final String time = times.get(position);
         if (time != null)
         {
-            TextView timeText = (TextView) v.findViewById(R.id.list_item_time_textview);
+            String [] data = time.split("--");
+            TextView timeText = (TextView) v.findViewById(R.id.timeText);
+            timeText.setText(data[0]);
+            TextView dateText = (TextView) v.findViewById(R.id.dateText);
+            dateText.setText(data[1]);
 
-
-            timeText.setText(time);
-
-
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    Log.d("JFonS","CLICKITTY CLICK");
-                }
-            });
         }
         return v;
     }

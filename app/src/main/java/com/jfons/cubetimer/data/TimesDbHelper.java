@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class TimesDbHelper extends SQLiteOpenHelper
 {
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 9;
 
     static final String DATABASE_NAME = "favourites.db";
 
@@ -19,7 +19,7 @@ public class TimesDbHelper extends SQLiteOpenHelper
     {
         final String SQL_CREATE_LOCATION_TABLE = "CREATE TABLE " +
                 TimesContract.TimeEntry.TABLE_NAME + " (" +
-                TimesContract.TimeEntry.COLUMN_TIME + " REAL NOT NULL, " +
+                TimesContract.TimeEntry.COLUMN_TIME + " LONG NOT NULL, " +
                 TimesContract.TimeEntry.COLUMN_CUBE + " TEXT NOT NULL, " +
                 TimesContract.TimeEntry.COLUMN_DATE + " DATE PRIMARY KEY" +
                 " );";

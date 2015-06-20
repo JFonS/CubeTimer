@@ -6,24 +6,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jfons.cubetimer.data.TimesContract;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.security.Timestamp;
+import java.text.DateFormat;
+import java.util.Date;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class ListFragment extends Fragment {
     private ListView listView;
     private TimesListAdapter adapter;
-    public static MainActivityFragment fragment;
-    public MainActivityFragment()
+    public static ListFragment fragment;
+    public ListFragment()
     {
         adapter = new TimesListAdapter();
         fragment = this;
@@ -46,7 +45,8 @@ public class MainActivityFragment extends Fragment {
         while(c.moveToNext())
         {
             String time = c.getString(0);
-
+            time += "--";
+            time += c.getString(2);
             adapter.add(time);
         }
 
